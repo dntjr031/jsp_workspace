@@ -1,0 +1,72 @@
+package com.herbmall.board.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import com.herbmall.db.ConnectionPoolMgr;
+
+public class boardDAO {
+	private ConnectionPoolMgr pool = null;
+
+	public boardDAO() {
+		pool = new ConnectionPoolMgr();
+	}
+
+	public int insertBoard(BoardVo vo) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+
+		try {
+			con = pool.getConnection();
+
+			String sql = "insert into board(NO, NAME, PWD, TITLE, EMAIL, CONTENT)\n"
+					+ "values(BOARD_SEQ.nextval, ?, ?, ?, ?, ?)";
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, vo.getName());
+			ps.setString(2, vo.getPwd());
+			ps.setString(3, vo.getTitle());
+			ps.setString(4, vo.getEmail());
+			ps.setString(5, vo.getContent());
+
+			int cnt = ps.executeUpdate();
+			System.out.println("글 등록 결과 cnt=" + cnt +", 매개변수 vo=" + vo);
+			
+			return cnt;
+		} finally {
+			pool.dbClose(con, ps);
+		}
+	}
+	
+	public List<BoardVo> selectAll() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			con = pool.getConnection();
+			
+			String sql = "select * from board order by no desc";
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				int no = rs.getInt("no");
+				String title = rs.getString("title");
+				String name = rs.getString("name");
+				String pwd = rs.getString("pwd");
+				String email = rs.getString("email");
+				String content = rs.getString("content");
+				int readcount = rs.getInt("readcount");
+			}
+			
+		}finally {
+			pool.dbClose(con, ps, rs);
+		}
+	}
+
+}

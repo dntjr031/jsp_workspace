@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	// delete.jsp 에서 삭제버튼 누르면 post방식으로 전송
+	
+	String no = request.getParameter("no");
+	String pwd = request.getParameter("pwd");
+ 
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>delete_ok.jsp</title>
+
+</head>
+<body>
+
+</body>
+</html>

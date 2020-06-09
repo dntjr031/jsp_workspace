@@ -1,0 +1,3 @@
+INDEX VERSION 1.131
+C:\Users\STU-03\Documents\lecture\java\workspace_list\jsp_ws\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\283046962.index
+\Herbmall\src

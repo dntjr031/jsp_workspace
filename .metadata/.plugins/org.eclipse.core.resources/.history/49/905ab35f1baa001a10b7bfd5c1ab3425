@@ -1,0 +1,36 @@
+<%@page import="java.sql.SQLException"%>
+<%@page import="com.herbmall.board.model.boardDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%
+	//edit.jsp에서 post방식으로 서브밋
+	//1
+	request.setCharacterEncoding("utf-8");
+	String no = request.getParameter("no");
+	String name = request.getParameter("name");
+	String pwd = request.getParameter("pwd");
+	String tilte = request.getParameter("title");
+	String eamil = request.getParameter("email");
+	String content = request.getParameter("content");
+
+	//2
+	boardDAO dao = new boardDAO();
+
+	try {
+		dao.updateBoard(vo);
+
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	//3
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>edit_od.jsp</title>
+</head>
+<body>
+
+</body>
+</html>

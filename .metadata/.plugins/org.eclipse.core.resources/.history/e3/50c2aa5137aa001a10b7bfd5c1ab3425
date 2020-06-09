@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+      function start(){
+        var xhr = new XMLHttpRequest();
+        var key = 'kiZwyfbNvf7ayGB83FRFdL0awogQoxxSH1ek09I2jZKPyKoFoHxtKHpmm3eTk8CEfwfzzU5Ifi8MgFlG92fJfg%3D%3D';
+        var url = 'http://apis.data.go.kr/1262000/CountryBasicService/getCountryBasicList'; /*URL*/
+        var queryParams = '?' + encodeURIComponent('ServiceKey') + '='+'서비스키'; /*Service Key*/
+        queryParams += '&' + encodeURIComponent('serviceKey') + '=' + encodeURIComponent(key); /**/
+        queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /**/
+        queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /**/
+        queryParams += '&' + encodeURIComponent('countryName') + '=' + encodeURIComponent('가나'); /**/
+        queryParams += '&' + encodeURIComponent('countryEnName') + '=' + encodeURIComponent('Ghana'); /**/
+        queryParams += '&' + encodeURIComponent('isoCode1') + '=' + encodeURIComponent('GHA'); /**/
+        queryParams += '&' + encodeURIComponent('isoCode2') + '=' + encodeURIComponent(''); /**/
+        queryParams += '&' + encodeURIComponent('isoCode3') + '=' + encodeURIComponent(''); /**/
+        queryParams += '&' + encodeURIComponent('isoCode4') + '=' + encodeURIComponent(''); /**/
+        queryParams += '&' + encodeURIComponent('isoCode5') + '=' + encodeURIComponent(''); /**/
+        queryParams += '&' + encodeURIComponent('isoCode6') + '=' + encodeURIComponent(''); /**/
+        queryParams += '&' + encodeURIComponent('isoCode7') + '=' + encodeURIComponent(''); /**/
+        queryParams += '&' + encodeURIComponent('isoCode8') + '=' + encodeURIComponent(''); /**/
+        queryParams += '&' + encodeURIComponent('isoCode9') + '=' + encodeURIComponent(''); /**/
+        queryParams += '&' + encodeURIComponent('isoCode10') + '=' + encodeURIComponent(''); /**/
+
+        xhr.open('GET', url + queryParams);
+        xhr.onreadystatechange = function () {
+          if (this.readyState == 4) {
+              alert('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
+          }
+        };
+
+        xhr.send('');
+      }
+
+
+    </script>
+  </head>
+  <body>
+    <input type="button" name="button" value="눌러" onclick="start()">
+  </body>
+</html>
